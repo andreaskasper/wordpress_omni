@@ -1,0 +1,18 @@
+{
+	"version" => "0.00.20200418",
+	"download_url" : "https://rudrastyh.com/misha-plugin.zip",
+	"requires" : "3.0",
+	"tested" : "4.8.1",
+	"requires_php" : "5.3",
+	"last_updated" : "2020-04-18 13:22:00",
+	"sections" : {
+		"description" : "This is the plugin to test your updater script",
+		"installation" : "Upload the plugin to your blog, Activate it, that's it!",
+		"changelog" : "<h4>1.1 –  January 17, 2020</h4><ul><li>Some bugs are fixed.</li><li>Release date.</li></ul>"
+	},
+	"banners" : {
+		"low" : "https://YOUR_WEBSITE/banner-772x250.jpg",
+		"high" : "https://YOUR_WEBSITE/banner-1544x500.jpg"
+	},
+	"screenshots" : "<ol><li><a href='IMG_URL' target='_blank'><img src='IMG_URL' alt='CAPTION' /></a><p>CAPTION</p></li></ol>"
+}
