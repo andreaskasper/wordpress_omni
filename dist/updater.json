@@ -13,7 +13,7 @@
         "description": "<p>Das Wordpress Plugin f\u00fcr alle goo1 Projekte<\/p><p>Es soll f\u00fcr Sicherheit und Stabilit\u00e4t sorgen und weitere Funktionen Implementieren.<\/p>",
         "installation": "Bitte kontaktieren Sie Andreas Kasper f\u00fcr die Installation. Dieses Plugin ist eine personalisierte Anpassung und nicht im offiziellen Wordpress-Pluginstore verf\u00fcgbar.",
         "changelog": "<h2>Changelog<\/h2><p>Erster Checkin, alle Funktioner werden initial eingebaut.<\/p>",
-        "Kontakt_Andreas": "Andreas Kasper<br\/>Mobil: 0163\/6693260"
+        "Kontakt_Andreas": ""
     },
     "icons": {
         "1x": "https:\/\/raw.githubusercontent.com\/andreaskasper\/wordpress_omni\/master\/dist\/logo_128.png",
