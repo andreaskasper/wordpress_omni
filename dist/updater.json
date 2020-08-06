@@ -1,11 +1,11 @@
 {
     "name": "goo1 Omni",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "download_url": "https:\/\/raw.githubusercontent.com\/andreaskasper\/wordpress_omni\/master\/dist\/goo1-omni.zip",
     "homepage": "https:\/\/github.com\/andreaskasper\/",
     "requires": "4.5",
     "tested": "5.4.1",
-    "last_updated": "2020-08-04 22:23:26",
+    "last_updated": "2020-08-06 03:25:28",
     "upgrade_notice": "Dies ist das erste Upgrade. Es kommen erste Funktionen hinzu.",
     "author": "Andreas Kasper",
     "author_homepage": "https:\/\/goo1.de\/",
