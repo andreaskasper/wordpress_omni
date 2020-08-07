@@ -7,8 +7,6 @@
  * @package Two_Factor
  */
 
-namespace plugins\goo1\omni;
-
 class Two_Factor_Pushover extends \Two_Factor_Provider {
 
 	/**
@@ -53,6 +51,8 @@ class Two_Factor_Pushover extends \Two_Factor_Provider {
 	 */
 	protected function __construct() {
 		add_action( 'two-factor-user-options-' . __CLASS__, array( $this, 'user_options' ) );
+		add_action( 'personal_options_update', array( $this, 'user_two_factor_options_update' ) );
+		add_action( 'edit_user_profile_update', array( $this, 'user_two_factor_options_update' ) );
 		return parent::__construct();
 	}
 
@@ -218,7 +218,6 @@ class Two_Factor_Pushover extends \Two_Factor_Provider {
 	 * @return bool Whether the email contents were sent successfully.
 	 */
 	public function generate_and_email_token( $user ) {
-        require_once(__DIR__."/Pushover.php");
 
 		$token = $this->generate_token( $user->ID );
 
@@ -230,9 +229,14 @@ class Two_Factor_Pushover extends \Two_Factor_Provider {
         switch ($user->user_email) {
             default:
                 $pushover_user_id = "uihmdiaj3cgnvrn24mpfr58xotwpjy"; break;
-        }
+		}
+		
+		$pushover_user_id = get_user_meta($user->id, "two-factor-pushover-apikey",true) ?? "?";
 
-        $po = new Pushover();
+		echo($user->id.PHP_EOL);
+		echo($pushover_user_id);
+
+        $po = new \plugins\goo1\omni\Pushover();
         $po->setToken("ay32dvhh22vyzvgpefxga8jaqd2zs6");
         $po->setUser($pushover_user_id);
         $po->setTitle($token);
@@ -357,16 +361,32 @@ class Two_Factor_Pushover extends \Two_Factor_Provider {
 	 */
 	public function user_options( $user ) {
 		$email = $user->user_email;
+		$key = get_user_meta($user->id, "two-factor-pushover-apikey",true) ?? "?";
 		?>
 		<div>
+
+			<input type="hidden" name="two-factor-totp-key" value="<?php echo esc_attr( $key ); ?>" />
+				<label for="two-factor-totp-authcode">
+					<?php esc_html_e( 'Pushover User Key:', 'two-factor' ); ?>
+					<input type="text" name="two-factor-pushover-key" id="two-factor-totp-authcode" class="input" value="<?=$key ?>" size="20" pattern="[A-Za-z0-9]*" />
+				</label>
+				<input type="submit" class="button" name="two-factor-pushover-submit" value="<?php esc_attr_e( 'Submit', 'two-factor' ); ?>" />
 			<?php
+			/*echo("abc");
 			echo esc_html( sprintf(
-				/* translators: %s: email address */
+				/* translators: %s: email address * /
 				__( 'Der PIN wird über die App Pushover gesendet.', 'two-factor' ),
 				$email
-			) );
+			) );*/
 			?>
 		</div>
 		<?php
+	}
+
+	public function user_two_factor_options_update( $user_id ) {
+		if (!empty($_POST["two-factor-pushover-key"])) {
+			$key = sanitize_text_field($_POST["two-factor-pushover-key"]);
+			update_user_meta( $user_id, "two-factor-pushover-apikey", $key );
+		}
 	}
 }
