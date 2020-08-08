@@ -21,7 +21,7 @@ foreach ($files as $name => $file)
     {
         // Get real and relative path for current file
         $filePath = $file->getRealPath();
-        $relativePath = substr($filePath, strlen($rootPath));
+        $relativePath = str_replace(DIRECTORY_SEPARATOR, "/", substr($filePath, strlen($rootPath)));
 
         // Add current file to archive
         $zip->addFile($filePath, "goo1-omni/".$relativePath);
