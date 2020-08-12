@@ -3,6 +3,16 @@
 // Get real path for our folder
 $rootPath = __DIR__."/src/goo1-omni/";
 
+$str = file_get_contents(__DIR__."/src/goo1-omni/goo1-omni.php");
+if (!preg_match("@Version: (?P<v>[0-9\.]+)@mi", $str, $m2)) die("Version nicht gefunden".PHP_EOL);
+$m = $m2;
+$g = explode(".", $m["v"]);
+$g[2]++;
+$m["v"]=implode(".", $g);
+$str = str_replace("Version: ".$m2["v"], "Version: ".$m["v"], $str);
+file_put_contents(__DIR__."/src/goo1-omni/goo1-omni.php", $str);
+echo("Version: ".$m2["v"]." => ".$m["v"].PHP_EOL);
+
 // Initialize archive object
 $zip = new ZipArchive();
 $zip->open('dist/goo1-omni.zip', ZipArchive::CREATE | ZipArchive::OVERWRITE);
@@ -31,15 +41,7 @@ foreach ($files as $name => $file)
 // Zip archive will be created only after closing object
 $zip->close();
 
-$str = file_get_contents(__DIR__."/src/goo1-omni/goo1-omni.php");
-if (!preg_match("@Version: (?P<v>[0-9\.]+)@mi", $str, $m2)) die("Version nicht gefunden".PHP_EOL);
-$m = $m2;
-$g = explode(".", $m["v"]);
-$g[2]++;
-$m["v"]=implode(".", $g);
-$str = str_replace("Version: ".$m2["v"], "Version: ".$m["v"], $str);
-file_put_contents(__DIR__."/src/goo1-omni/goo1-omni.php", $str);
-echo("Version: ".$m2["v"]." => ".$m["v"].PHP_EOL);
+
 
 $version = $m["v"];
 
