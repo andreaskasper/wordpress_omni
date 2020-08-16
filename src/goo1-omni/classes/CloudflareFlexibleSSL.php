@@ -12,9 +12,6 @@ public function run() {
         $_SERVER[ 'HTTPS' ] = 'on';
         add_action( 'shutdown', array( $this, 'maintainPluginLoadPosition' ) );
     }
-    if ( version_compare( PHP_VERSION, '5.4.0', '>=' ) ) {
-        include_once( dirname( __FILE__ ).'/shieldprom.php' );
-    }
 }
 
 /**
