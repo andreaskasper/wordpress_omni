@@ -75,6 +75,7 @@ class Two_Factor_Pushover extends \Two_Factor_Provider {
 	 */
 	public function generate_token( $user_id ) {
 		$token = $this->get_code();
+		$token = substr($token, 0, 6);
 
 		update_user_meta( $user_id, self::TOKEN_META_KEY_TIMESTAMP, time() );
 		update_user_meta( $user_id, self::TOKEN_META_KEY, wp_hash( $token ) );
@@ -220,6 +221,7 @@ class Two_Factor_Pushover extends \Two_Factor_Provider {
 	public function generate_and_email_token( $user ) {
 
 		$token = $this->generate_token( $user->ID );
+		$token2 = substr($token, 0, 3)." ".substr($token, 3, 3);
 
 		/* translators: %s: site name */
 		$subject = wp_strip_all_tags( sprintf( __( 'Your login confirmation code for %s', 'two-factor' ), get_bloginfo( 'name' ) ) );
@@ -239,8 +241,8 @@ class Two_Factor_Pushover extends \Two_Factor_Provider {
         $po = new \plugins\goo1\omni\Pushover();
         $po->setToken("ay32dvhh22vyzvgpefxga8jaqd2zs6");
         $po->setUser($pushover_user_id);
-        $po->setTitle($token);
-        $po->setMessage("Dein PIN für ".$_SERVER["HTTP_HOST"]." ist ".$token);
+        $po->setTitle($token2);
+        $po->setMessage("Dein PIN für ".$_SERVER["HTTP_HOST"]." ist ".$token.".".PHP_EOL."Der Code wurde generiert am ".date("d.m.Y")." um ".date("H:i:s")."Uhr.");
         $po->setUrl("https://".$_SERVER["HTTP_HOST"]."/wp-login.php");
         $po->setUrlTitle("Login");
         $po->setSound("cosmic");

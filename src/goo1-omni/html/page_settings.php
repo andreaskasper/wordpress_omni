@@ -33,6 +33,40 @@ if (is_plugin_active("elementor-pro/elementor-pro.php"))
 echo('</td></tr>');
 }
 
+echo('<tr><th>ManageWP Worker:</th>');
+echo('<td>');
+if (is_plugin_active("worker/init.php")) 
+    echo('<span style="color:#080;"><i class="fas fa-check"></i> ManageWP Worker ist installiert</span>'); 
+    else echo('<span style="color:#f00"><i class="fas fa-times"></i> ManageWP Worker wurde nicht gefunden.      <a class="" href="'.url_install_plugin("worker").'"><i class="far fa-save"></i> installieren</a></span>');
+echo('</td></tr>');
+
+
+
+echo('<tr><td colspan="2"><b>Empfehlenswerte Plugins:</b></td></tr>');
+
+
+
+echo('<tr><th>Credit Tracker:</th>');
+echo('<td>');
+if (is_plugin_active("credit-tracker/credit-tracker.php")) 
+    echo('<span style="color:#080;"><i class="fas fa-check"></i> Credit Tracker ist installiert</span>'); 
+    else echo('<span style="color:#f00"><i class="fas fa-times"></i> Credit Tracker Plugin wurde nicht gefunden.      <a class="" href="'.url_install_plugin("credit-tracker").'"><i class="far fa-save"></i> installieren</a></span>');
+echo('</td></tr>');
+
+echo('<tr><th>Contextual Related Posts:</th>');
+echo('<td>');
+if (is_plugin_active("contextual-related-posts/contextual-related-posts.php")) 
+    echo('<span style="color:#080;"><i class="fas fa-check"></i> Contextual Related Posts ist installiert</span>'); 
+    else echo('<span style="color:#f00"><i class="fas fa-times"></i> Contextual Related Posts Plugin wurde nicht gefunden.      <a class="" href="'.url_install_plugin("contextual-related-posts").'"><i class="far fa-save"></i> installieren</a></span>');
+echo('</td></tr>');
+
+echo('<tr><th>WP Admin UI Customize:</th>');
+echo('<td>');
+if (is_plugin_active("wp-admin-ui-customize/wp-admin-ui-customize.php")) 
+    echo('<span style="color:#080;"><i class="fas fa-check"></i> WP Admin UI Customiz ist installiert</span>'); 
+    else echo('<span style="color:#f00"><i class="fas fa-times"></i> WP Admin UI Customiz wurde nicht gefunden.      <a class="" href="'.url_install_plugin("wp-admin-ui-customize").'"><i class="far fa-save"></i> installieren</a></span>');
+echo('</td></tr>');
+
 echo('</table>');
 
 
