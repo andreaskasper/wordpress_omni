@@ -1,0 +1,126 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: goo1 Omni\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-17 19:35+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.4.3; wp-5.5.1"
+
+#: html/page_reporter.php:27
+msgid "Aks Andreas if you're having a question or problem"
+msgstr ""
+
+#: html/page_reporter.php:28
+msgid "goo1 Helpdesk"
+msgstr ""
+
+#: html/page_reporter.php:34
+msgid "Your report/request was sent..."
+msgstr ""
+
+#: html/page_reporter.php:34
+msgid "Ticket id:"
+msgstr ""
+
+#: html/page_reporter.php:37
+msgid "Your report/request couldn't be sent."
+msgstr ""
+
+#: html/page_reporter.php:53
+msgid "Subject"
+msgstr ""
+
+#: html/page_reporter.php:58
+msgid "Type"
+msgstr ""
+
+#: html/page_reporter.php:60
+msgid "Question"
+msgstr ""
+
+#: html/page_reporter.php:61
+msgid "Incident"
+msgstr ""
+
+#: html/page_reporter.php:62
+msgid "Problem"
+msgstr ""
+
+#: html/page_reporter.php:63
+msgid "Feature Request"
+msgstr ""
+
+#: html/page_reporter.php:68
+msgid "Priority"
+msgstr ""
+
+#: html/page_reporter.php:70
+msgid "low"
+msgstr ""
+
+#: html/page_reporter.php:71
+msgid "normal"
+msgstr ""
+
+#: html/page_reporter.php:72
+msgid "high"
+msgstr ""
+
+#: html/page_reporter.php:73
+msgid "absolutely urgent"
+msgstr ""
+
+#: html/page_reporter.php:78
+msgid "Message"
+msgstr ""
+
+#: html/page_reporter.php:81
+msgid ""
+"Please describe in detail the best you can, to help you as fast as possible."
+msgstr ""
+
+#: html/page_reporter.php:86
+msgid "Affected URL"
+msgstr ""
+
+#: html/page_reporter.php:96
+msgid "send your request"
+msgstr ""
+
+#: classes/core.php:43 classes/core.php:44
+msgid "Help"
+msgstr ""
+
+#: classes/core.php:57
+msgid "ask Andi"
+msgstr ""
+
+#: classes/core.php:57
+msgid "need help"
+msgstr ""
+
+#. Name of the plugin
+msgid "goo1 Omni"
+msgstr ""
+
+#. Description of the plugin
+msgid "Important functions for goo1 websites"
+msgstr ""
+
+#. URI of the plugin
+#. Author URI of the plugin
+msgid "https://github.com/andreaskasper/"
+msgstr ""
+
+#. Author of the plugin
+msgid "Andreas Kasper"
+msgstr ""

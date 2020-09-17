@@ -1,0 +1,127 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: goo1 Omni\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-17 19:35+0000\n"
+"PO-Revision-Date: 2020-09-17 19:40+0000\n"
+"Last-Translator: \n"
+"Language-Team: Deutsch\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.4.3; wp-5.5.1"
+
+#: html/page_reporter.php:27
+msgid "Aks Andreas if you're having a question or problem"
+msgstr "Frag Andreas, wenn Du eine Frage oder ein Problem hast"
+
+#: html/page_reporter.php:28
+msgid "goo1 Helpdesk"
+msgstr "goo1 Hilfe"
+
+#: html/page_reporter.php:34
+msgid "Your report/request was sent..."
+msgstr "Deine Frage/Meldung wurde gesendet..."
+
+#: html/page_reporter.php:34
+msgid "Ticket id:"
+msgstr "Ticket-ID:"
+
+#: html/page_reporter.php:37
+msgid "Your report/request couldn't be sent."
+msgstr "Deine Anfrage konnte nicht gesendet werden."
+
+#: html/page_reporter.php:53
+msgid "Subject"
+msgstr "Betreff"
+
+#: html/page_reporter.php:58
+msgid "Type"
+msgstr "Art"
+
+#: html/page_reporter.php:60
+msgid "Question"
+msgstr "Frage"
+
+#: html/page_reporter.php:61
+msgid "Incident"
+msgstr "Vorfall"
+
+#: html/page_reporter.php:62
+msgid "Problem"
+msgstr "Problem"
+
+#: html/page_reporter.php:63
+msgid "Feature Request"
+msgstr "Idee/Vorschlag"
+
+#: html/page_reporter.php:68
+msgid "Priority"
+msgstr "Priorität"
+
+#: html/page_reporter.php:70
+msgid "low"
+msgstr "niedrig"
+
+#: html/page_reporter.php:71
+msgid "normal"
+msgstr "normal"
+
+#: html/page_reporter.php:72
+msgid "high"
+msgstr "wichtig"
+
+#: html/page_reporter.php:73
+msgid "absolutely urgent"
+msgstr "absoluter Notfall"
+
+#: html/page_reporter.php:78
+msgid "Message"
+msgstr "Nachricht"
+
+#: html/page_reporter.php:81
+msgid ""
+"Please describe in detail the best you can, to help you as fast as possible."
+msgstr ""
+"Bitte beschreibe so detailiert Du kannst, damit wir Dir so schnell wie "
+"möglich helfen können."
+
+#: html/page_reporter.php:86
+msgid "Affected URL"
+msgstr "Betroffene Webseite"
+
+#: html/page_reporter.php:96
+msgid "send your request"
+msgstr "sende Deine Anfrage"
+
+#: classes/core.php:43 classes/core.php:44
+msgid "Help"
+msgstr "Hilfe"
+
+#: classes/core.php:57
+msgid "ask Andi"
+msgstr "frag Andi"
+
+#: classes/core.php:57
+msgid "need help"
+msgstr "brauche Hilfe"
+
+#. Name of the plugin
+msgid "goo1 Omni"
+msgstr "goo1 Omni"
+
+#. Description of the plugin
+msgid "Important functions for goo1 websites"
+msgstr "Wichtige Funktionen für goo1 bezogene Webseiten"
+
+#. URI of the plugin
+#. Author URI of the plugin
+msgid "https://github.com/andreaskasper/"
+msgstr "https://github.com/andreaskasper/"
+
+#. Author of the plugin
+msgid "Andreas Kasper"
+msgstr "Andreas Kasper"

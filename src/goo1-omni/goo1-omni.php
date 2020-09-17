@@ -2,9 +2,9 @@
 /**
  * Plugin Name: goo1 Omni
  * Plugin URI: https://github.com/andreaskasper/
- * Description: Wichtige Funktionen für die goo1 Webseiten.
+ * Description: Important functions for goo1 websites
  * Author: Andreas Kasper
- * Version: 0.0.7
+ * Version: 0.0.8
  * Author URI: https://github.com/andreaskasper/
  * Network: True
  * Text Domain: goo1-omni
@@ -22,6 +22,10 @@ spl_autoload_register(function ($class_name) {
 		}
 	}
 	return false;
+});
+
+add_action( 'plugins_loaded', function() {
+    load_plugin_textdomain( 'goo1-omni', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
 });
 \plugins\goo1\omni\core::init();
 
