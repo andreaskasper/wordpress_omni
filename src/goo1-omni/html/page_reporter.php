@@ -92,10 +92,34 @@ table#list01 input:checked ~ span {
     </tbody>
 </table>
 
+<?php
+switch ($json["plan"] ?? "") {
+    case "free-trial":
+        echo('<div style="border: 1px solid #007cba; color: #007cba; background: #007cba40; border-radius: 1rem; padding: 1rem; width: 30rem;">');
+        echo('<div style="font-size: 125%;">Support-Plan: <b>'.__("free", "goo1-omni").'</b></div>');
+        echo('<div>All Supportservices are free.</div>');
+        echo('</div>');
+        break;
+    default:
+    case "pay-as-you-go":
+        echo('<div style="border: 1px solid #007cba; color: #007cba; background: #007cba40; border-radius: 1rem; padding: 1rem; width: 30rem;"><table style="width:100%;"><tr style="vertical-align: top;"><td>');
+        echo('<div style="font-size: 125%;">Support-Plan: <b>'.__("pay-as-you-go", "goo1-omni").'</b></div>');
+        echo('<div>Pricing (excluding bugs): 25&euro;/15mins</div>');
+        echo('<div>Current Credits: '.number_format($json["credits"] ?? 0,2,",",".").'&euro;</div>');
+        echo('</td><td style="text-align: right;">');
+        $url2 = 'https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business='.urlencode("pay@goo1.de").'&button_subtype=services&currency_code=EUR&amount=25&item_name='.urlencode("SupportCredits for ".$_SERVER["HTTP_HOST"]);
+        echo('<a href="'.$url2.'" class="button button-primary" target="_blank"><i class="fab fa-paypal"></i> '.__("deposit 25EUR","goo1-omni").'</a>');
+        echo('</td>');
+        echo('</tr></table></div>');
+        break;
+}
+
+?>
+
 <table><tr>
     <td><button type="submit" class="button button-primary"><i class="fas fa-paper-plane"></i> <?=__("send your request","goo1-omni"); ?></button></td>
     <td><?php
-print_r($json);
+//print_r($json);
     ?></td>
 </tr></table>
 

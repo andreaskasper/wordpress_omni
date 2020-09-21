@@ -32,8 +32,42 @@ class core {
   public static function action_init() {
     if (is_admin()) self::action_admin_init();
     add_action( 'admin_bar_menu', [__CLASS__, "adminbar_init"], 50);
+    add_role(	'owner',
+		  __('Owner', "goo1-omni"),
+		  array(
+			  // Additional Capabilities
+			  'edit_theme_options' => false,
+			  // Editor Capabilities
+			  'delete_others_pages' => false,
+			  'delete_others_posts' => false,
+			  'delete_pages' => true,
+			  'delete_posts' => true,
+			  'delete_private_pages' => true,
+		  	'delete_private_posts' => true,
+	  		'delete_published_pages' => true,
+	  		'delete_published_posts' => true,
+	  		'edit_others_pages' => false,
+	  		'edit_others_posts' => false,
+	  		'edit_pages' => true,
+   			'edit_posts' => true,
+	  		'edit_private_pages' => true,
+	  		'edit_private_posts' => true,
+	  		'edit_published_pages' => true,
+  			'edit_published_posts' => true,
+  			'manage_categories' => true,
+	  		'manage_links' => true,
+	  		'moderate_comments' => true,
+	  		'publish_pages' => true,
+	  		'publish_posts' => true,
+	  		'read' => true,
+	  		'read_private_pages' => true,
+	  		'read_private_posts' => true,
+	  		'unfiltered_html' => true,
+	  		'upload_files' => true
+		  )
+    );
 
-    
+    wp_enqueue_style("fontawesome", "https://library.goo1.de/fontawesome/5/css/all.min.css", array(), "5", "all");
   }
 
   public static function action_admin_init() {

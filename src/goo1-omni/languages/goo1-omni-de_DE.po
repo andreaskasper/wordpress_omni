@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: goo1 Omni\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 19:35+0000\n"
-"PO-Revision-Date: 2020-09-17 19:40+0000\n"
+"POT-Creation-Date: 2020-09-21 00:36+0000\n"
+"PO-Revision-Date: 2020-09-21 00:37+0000\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch\n"
 "Language: de_DE\n"
@@ -13,6 +13,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.4.3; wp-5.5.1"
+
+#: classes/core.php:36
+msgid "Owner"
+msgstr "Eigentümer"
+
+#: classes/core.php:75 classes/core.php:76
+msgid "Help"
+msgstr "Hilfe"
+
+#: classes/core.php:89
+msgid "ask Andi"
+msgstr "frag Andi"
+
+#: classes/core.php:89
+msgid "need help"
+msgstr "brauche Hilfe"
 
 #: html/page_reporter.php:27
 msgid "Aks Andreas if you're having a question or problem"
@@ -96,18 +112,6 @@ msgstr "Betroffene Webseite"
 #: html/page_reporter.php:96
 msgid "send your request"
 msgstr "sende Deine Anfrage"
-
-#: classes/core.php:43 classes/core.php:44
-msgid "Help"
-msgstr "Hilfe"
-
-#: classes/core.php:57
-msgid "ask Andi"
-msgstr "frag Andi"
-
-#: classes/core.php:57
-msgid "need help"
-msgstr "brauche Hilfe"
 
 #. Name of the plugin
 msgid "goo1 Omni"
