@@ -31,6 +31,7 @@ class core {
 
   public static function action_init() {
     if (is_admin()) self::action_admin_init();
+    \plugins\goo1\omni\design::action_init();
     add_action( 'admin_bar_menu', [__CLASS__, "adminbar_init"], 50);
     add_role(	'owner',
 		  __('Owner', "goo1-omni"),
@@ -68,6 +69,7 @@ class core {
     );
 
     wp_enqueue_style("fontawesome", "https://library.goo1.de/fontawesome/5/css/all.min.css", array(), "5", "all");
+    
   }
 
   public static function action_admin_init() {
@@ -80,6 +82,12 @@ class core {
         'goo1omni-reporter',
         function() {
             include(__DIR__."/../html/page_reporter.php");
+      });
+    });
+    add_action('wp_dashboard_setup', function() {
+      global $wp_meta_boxes;
+      wp_add_dashboard_widget('custom_help_widget', 'goo1', function() {
+          include(__DIR__."/../html/widget_dashboard.php");
       });
     });
   }

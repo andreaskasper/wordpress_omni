@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/andreaskasper/
  * Description: Important functions for goo1 websites
  * Author: Andreas Kasper
- * Version: 0.1.1
+ * Version: 0.1.3
  * Author URI: https://github.com/andreaskasper/
  * Network: True
  * Text Domain: goo1-omni

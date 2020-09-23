@@ -70,7 +70,7 @@ echo('</td></tr>');
 echo('</table>');
 
 
-echo('<div class="notice notice-warning" style="margin-top: 100px;"><i class="fas fa-user-hard-hat fa-2x" style="float:left; margin: 0.3rem 0.5rem 00rem 0;"></i><p>TODO: Noch ein paar weitere abfragen und Features.</p></div>');
+echo('<div class="notice notice-warning" style="margin-top: 100px;"><i class="fas fa-user-hard-hat fa-2x" style="float:left; margin: 0.3rem 0.5rem 00rem 0;"></i><p>TODO: Noch ein paar weitere Abfragen und Features.</p></div>');
 
 exit;
 

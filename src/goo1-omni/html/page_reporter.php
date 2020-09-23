@@ -6,6 +6,10 @@ $a = get_site_option("plugin-goo1-omni-personal", false);
 if ($a == false) add_site_option("plugin-goo1-omni-personal", $json["personal"]); else update_site_option("plugin-goo1-omni-personal", $json["personal"]);
 $is_personal = ($json["personal"] == 2);
 
+if (get_site_option("plugin-goo1-show_logo", false) == false) add_site_option("plugin-goo1-show_logo", $json["show_logo"]); else update_site_option("plugin-goo1-show_logo", $json["show_logo"]);
+if (get_site_option("plugin-goo1-show_login", false) == false) add_site_option("plugin-goo1-show_login", $json["show_login"]); else update_site_option("plugin-goo1-show_login", $json["show_login"]);
+if (get_site_option("plugin-goo1-use_comments", false) == false) add_site_option("plugin-goo1-use_comments", $json["use_comments"]); else update_site_option("plugin-goo1-use_comments", $json["use_comments"]);
+
 if (!empty($_POST["act"]) AND $_POST["act"] == "send") {
     $current_user = wp_get_current_user();
     $m = new \plugins\goo1\omni\FreshdeskTicket();
