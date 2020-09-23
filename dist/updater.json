@@ -4,7 +4,7 @@
     "download_url": "https:\/\/raw.githubusercontent.com\/andreaskasper\/wordpress_omni\/master\/dist\/goo1-omni.zip",
     "homepage": "https:\/\/github.com\/andreaskasper\/",
     "requires": "4.5",
-    "tested": "5.5.0",
+    "tested": "5.5.1",
     "last_updated": "2020-09-23 01:12:36",
     "upgrade_notice": "Dies ist das erste Upgrade. Es kommen erste Funktionen hinzu.",
     "author": "Andreas Kasper",
