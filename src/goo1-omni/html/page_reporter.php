@@ -28,7 +28,7 @@ if (!empty($_POST["act"]) AND $_POST["act"] == "send") {
 @import url(https://library.goo1.de/fontawesome/5/css/all.min.css);
 </style>
 <h1><?php
-if ($is_personal) _e("Aks Andreas if you're having a question or problem", "goo1-omni");
+if ($is_personal) _e("Ask Andreas if you're having a question or problem", "goo1-omni");
 else _e("goo1 Helpdesk", "goo1-omni");
 ?></h1>
 <hr class="wp-header-end">
@@ -100,16 +100,21 @@ table#list01 input:checked ~ span {
 switch ($json["plan"] ?? "") {
     case "free-trial":
         echo('<div style="border: 1px solid #007cba; color: #007cba; background: #007cba40; border-radius: 1rem; padding: 1rem; width: 30rem;">');
-        echo('<div style="font-size: 125%;">Support-Plan: <b>'.__("free", "goo1-omni").'</b></div>');
-        echo('<div>All Supportservices are free.</div>');
+        echo('<table cellspacing="0" cellpadding="0" border="0" style="width:100%"/><tr><td>');
+        echo('<div style="font-size: 125%;">'.__("Support-Plan:","goo1-omni").' <b>'.__("free", "goo1-omni").'</b></div>');
+        echo('<div>'.__("All Supportservices are free.", "goo1-omni").'</div>');
+        echo('</td><td style="text-align: right;">');
+        echo('<div><a href="https://paypal.me/AndreasKasper" class="button" target="_blank" style="border: 1px solid #007cba; background: #007cba40; margin: 0 0.1rem 0.1rem 0;"><i class="fab fa-paypal"></i> '.__("PayPal Donate","goo1-omni").'</a></div>');
+        echo('<div><a href="https://www.patreon.com/AndreasKasper" class="button" target="_blank" style="border: 1px solid #007cba; background: #007cba40; margin: 0 0.1rem 0.1rem 0;"><i class="fab fa-patreon"></i> '.__("Patreon Donate","goo1-omni").'</a></div>');
+        echo('</td></tr></table>');
         echo('</div>');
         break;
     default:
     case "pay-as-you-go":
         echo('<div style="border: 1px solid #007cba; color: #007cba; background: #007cba40; border-radius: 1rem; padding: 1rem; width: 30rem;"><table style="width:100%;"><tr style="vertical-align: top;"><td>');
-        echo('<div style="font-size: 125%;">Support-Plan: <b>'.__("pay-as-you-go", "goo1-omni").'</b></div>');
-        echo('<div>Pricing (excluding bugs): 25&euro;/15mins</div>');
-        echo('<div>Current Credits: '.number_format($json["credits"] ?? 0,2,",",".").'&euro;</div>');
+        echo('<div style="font-size: 125%;">'.__("Support-Plan:", "goo1-omni").' <b>'.__("pay-as-you-go", "goo1-omni").'</b></div>');
+        echo('<div>'.__("Pricing (excluding bugs): 25&euro;/15mins", "goo1-omni").'</div>');
+        echo('<div>'.__("Current Credits:", "goo1-omni").' '.number_format($json["credits"] ?? 0,2,",",".").'&euro;</div>');
         echo('</td><td style="text-align: right;">');
         $url2 = 'https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business='.urlencode("pay@goo1.de").'&button_subtype=services&currency_code=EUR&amount=25&item_name='.urlencode("SupportCredits for ".$_SERVER["HTTP_HOST"]);
         echo('<a href="'.$url2.'" class="button button-primary" target="_blank"><i class="fab fa-paypal"></i> '.__("deposit 25EUR","goo1-omni").'</a>');

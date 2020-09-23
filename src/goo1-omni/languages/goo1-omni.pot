@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: goo1 Omni\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-21 00:36+0000\n"
+"POT-Creation-Date: 2020-09-23 12:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -15,100 +15,136 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.4.3; wp-5.5.1"
 
-#: classes/core.php:36
+#: classes/core.php:37
 msgid "Owner"
 msgstr ""
 
-#: classes/core.php:75 classes/core.php:76
+#: classes/core.php:79 classes/core.php:80
 msgid "Help"
 msgstr ""
 
-#: classes/core.php:89
+#: classes/core.php:99
 msgid "ask Andi"
 msgstr ""
 
-#: classes/core.php:89
+#: classes/core.php:99
 msgid "need help"
 msgstr ""
 
-#: html/page_reporter.php:27
-msgid "Aks Andreas if you're having a question or problem"
+#: html/page_reporter.php:31
+msgid "Ask Andreas if you're having a question or problem"
 msgstr ""
 
-#: html/page_reporter.php:28
+#: html/page_reporter.php:32
 msgid "goo1 Helpdesk"
 msgstr ""
 
-#: html/page_reporter.php:34
+#: html/page_reporter.php:38
 msgid "Your report/request was sent..."
 msgstr ""
 
-#: html/page_reporter.php:34
+#: html/page_reporter.php:38
 msgid "Ticket id:"
 msgstr ""
 
-#: html/page_reporter.php:37
+#: html/page_reporter.php:41
 msgid "Your report/request couldn't be sent."
 msgstr ""
 
-#: html/page_reporter.php:53
+#: html/page_reporter.php:57
 msgid "Subject"
 msgstr ""
 
-#: html/page_reporter.php:58
+#: html/page_reporter.php:62
 msgid "Type"
 msgstr ""
 
-#: html/page_reporter.php:60
+#: html/page_reporter.php:64
 msgid "Question"
 msgstr ""
 
-#: html/page_reporter.php:61
+#: html/page_reporter.php:65
 msgid "Incident"
 msgstr ""
 
-#: html/page_reporter.php:62
+#: html/page_reporter.php:66
 msgid "Problem"
 msgstr ""
 
-#: html/page_reporter.php:63
+#: html/page_reporter.php:67
 msgid "Feature Request"
 msgstr ""
 
-#: html/page_reporter.php:68
+#: html/page_reporter.php:72
 msgid "Priority"
 msgstr ""
 
-#: html/page_reporter.php:70
+#: html/page_reporter.php:74
 msgid "low"
 msgstr ""
 
-#: html/page_reporter.php:71
+#: html/page_reporter.php:75
 msgid "normal"
 msgstr ""
 
-#: html/page_reporter.php:72
+#: html/page_reporter.php:76
 msgid "high"
 msgstr ""
 
-#: html/page_reporter.php:73
+#: html/page_reporter.php:77
 msgid "absolutely urgent"
 msgstr ""
 
-#: html/page_reporter.php:78
+#: html/page_reporter.php:82
 msgid "Message"
 msgstr ""
 
-#: html/page_reporter.php:81
+#: html/page_reporter.php:85
 msgid ""
 "Please describe in detail the best you can, to help you as fast as possible."
 msgstr ""
 
-#: html/page_reporter.php:86
+#: html/page_reporter.php:90
 msgid "Affected URL"
 msgstr ""
 
-#: html/page_reporter.php:96
+#: html/page_reporter.php:104 html/page_reporter.php:115
+msgid "Support-Plan:"
+msgstr ""
+
+#: html/page_reporter.php:104
+msgid "free"
+msgstr ""
+
+#: html/page_reporter.php:105
+msgid "All Supportservices are free."
+msgstr ""
+
+#: html/page_reporter.php:107
+msgid "PayPal Donate"
+msgstr ""
+
+#: html/page_reporter.php:108
+msgid "Patreon Donate"
+msgstr ""
+
+#: html/page_reporter.php:115
+msgid "pay-as-you-go"
+msgstr ""
+
+#: html/page_reporter.php:116
+msgid "Pricing (excluding bugs): 25&euro;/15mins"
+msgstr ""
+
+#: html/page_reporter.php:117
+msgid "Current Credits:"
+msgstr ""
+
+#: html/page_reporter.php:120
+msgid "deposit 25EUR"
+msgstr ""
+
+#: html/page_reporter.php:129
 msgid "send your request"
 msgstr ""
 
