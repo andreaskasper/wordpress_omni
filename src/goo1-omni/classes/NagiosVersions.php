@@ -78,6 +78,12 @@ if ($plugin_available) {
             $state = 0;    
         }
 
+        if (!is_plugin_active("wordfence/wordfence.php")) {
+            $status = 'CRITICAL';
+            $state = 1;
+            $text[] = 'Das Plugin Wordfence fehlt!';
+        }
+
         Nagios::send($state, $status . '#' . implode($text, ';'));
         exit;
     }

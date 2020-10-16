@@ -19,8 +19,8 @@ echo('</td></tr>');
 echo('<tr><th>Two Factor Plugin:</th>');
 echo('<td>');
 if (is_plugin_active("two-factor/two-factor.php")) 
-    echo('<span style="color:#080;"><i class="fas fa-check"></i> Two-Factor Plugin ist installiert</span>'); 
-    else echo('<span style="color:#f00"><i class="fas fa-times"></i> Two Factor Plugin wurde nicht gefunden.      <a class="" href="'.url_install_plugin("two-factor").'"><i class="far fa-save"></i> installieren</a></span>');
+    echo('<span style="color:#080;"><i class="fas fa-check"></i> Plugin ist installiert</span>'); 
+    else echo('<span style="color:#f00"><i class="fas fa-times"></i> Plugin wurde nicht gefunden.      <a class="" href="'.url_install_plugin("two-factor").'"><i class="far fa-save"></i> installieren</a></span>');
 echo('</td></tr>');
 
 
@@ -28,16 +28,30 @@ if (is_plugin_active("elementor/elementor.php")) {
 echo('<tr><th>Elementor:</th>');
 echo('<td>');
 if (is_plugin_active("elementor-pro/elementor-pro.php")) 
-    echo('<span style="color:#080;"><i class="fas fa-check"></i> Elementor-Pro ist installiert</span>'); 
-    else echo('<span style="color:#f00"><i class="fas fa-times"></i> Elementor-Pro fehlt      <a class="" href="'.url_install_plugin("elementor-pro").'"><i class="far fa-save"></i> installieren</a></span>');
+    echo('<span style="color:#080;"><i class="fas fa-check"></i> Plugin ist installiert</span>'); 
+    else echo('<span style="color:#f00"><i class="fas fa-times"></i> Plugin fehlt      <a class="" href="'.url_install_plugin("elementor-pro").'"><i class="far fa-save"></i> installieren</a></span>');
 echo('</td></tr>');
 }
 
 echo('<tr><th>ManageWP Worker:</th>');
 echo('<td>');
 if (is_plugin_active("worker/init.php")) 
-    echo('<span style="color:#080;"><i class="fas fa-check"></i> ManageWP Worker ist installiert</span>'); 
-    else echo('<span style="color:#f00"><i class="fas fa-times"></i> ManageWP Worker wurde nicht gefunden.      <a class="" href="'.url_install_plugin("worker").'"><i class="far fa-save"></i> installieren</a></span>');
+    echo('<span style="color:#080;"><i class="fas fa-check"></i> Plugin ist installiert</span>'); 
+    else echo('<span style="color:#f00"><i class="fas fa-times"></i> Plugin wurde nicht gefunden.      <a class="" href="'.url_install_plugin("worker").'"><i class="far fa-save"></i> installieren</a></span>');
+echo('</td></tr>');
+
+echo('<tr><th>Wordfence:</th>');
+echo('<td>');
+if (is_plugin_active("wordfence/wordfence.php")) 
+    echo('<span style="color:#080;"><i class="fas fa-check"></i> Plugin ist installiert</span></td><td>'); 
+    else echo('<span style="color:#f00"><i class="fas fa-times"></i> Plugin wurde nicht gefunden.</td><td><a class="" href="'.url_install_plugin("wordfence").'"><i class="far fa-save"></i> installieren</a></span>');
+echo('</td></tr>');
+
+echo('<tr><th>UpdraftPlus – Sichern/Wiederherstellen:</th>');
+echo('<td>');
+if (is_plugin_active("updraftplus/updraftplus.php")) 
+    echo('<span style="color:#080;"><i class="fas fa-check"></i> Plugin ist installiert</span></td><td>'); 
+    else echo('<span style="color:#f00"><i class="fas fa-times"></i> Plugin wurde nicht gefunden.</td><td><a class="" href="'.url_install_plugin("updraftplus").'"><i class="far fa-save"></i> installieren</a></span>');
 echo('</td></tr>');
 
 
