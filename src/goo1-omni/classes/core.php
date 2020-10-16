@@ -7,6 +7,9 @@ class core {
   public static function init() {
     add_filter("two_factor_providers", [__CLASS__, "my_two_factor_providers"]);
     add_action('init', [__CLASS__, "action_init"]);
+    add_filter("template_redirect", function() {
+      if ($_SERVER["REQUEST_URI"] == "/ads.txt") \plugins\goo1\omni\adsense::adstxt();
+    });
 		add_action( 'rest_api_init', function () {
       register_rest_route( 'nagios', '/versions.json', array(
         'methods' => 'GET',
