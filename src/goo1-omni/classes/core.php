@@ -5,6 +5,7 @@ namespace plugins\goo1\omni;
 class core {
 	
   public static function init() {
+    if (strpos($_SERVER["REQUEST_URI"], "/wp-admin/") !== false) self::security_block_country();
     add_filter("two_factor_providers", [__CLASS__, "my_two_factor_providers"]);
     add_action('init', [__CLASS__, "action_init"]);
     add_filter("template_redirect", function() {
@@ -15,11 +16,6 @@ class core {
         'methods' => 'GET',
         'callback' => ["\plugins\goo1\omni\NagiosVersions", "test"],
       ));
-    });
-    add_action('admin_menu', function() {
-      add_submenu_page('options-general.php',"goo1 Omni", "goo1 Omni", "manage_options", "goo1omni-settings", function() {
-        include(__DIR__."/../html/page_settings.php");
-      });
     });
     if (!empty($_SERVER["HTTP_CF_RAY"])) {
       $a = new CloudflareFlexibleSSL();
@@ -77,6 +73,9 @@ class core {
 
   public static function action_admin_init() {
     add_action('admin_menu', function() {
+      add_submenu_page('options-general.php',"goo1 Omni", "goo1 Omni", "manage_options", "goo1omni-settings", function() {
+        include(__DIR__."/../html/page_settings.php");
+      });
       add_submenu_page(
         null,
         __( 'Help', 'goo1-omni' ),
@@ -86,6 +85,24 @@ class core {
         function() {
             include(__DIR__."/../html/page_reporter.php");
       });
+      add_submenu_page(
+        null,
+        __( 'Welcome', 'textdomain' ),
+        __( 'Welcome', 'textdomain' ),
+        'manage_options',
+        'goo1omni-getpro',
+        function() {
+          include(__DIR__."/../html/page_getpro.php");
+      });
+      add_submenu_page(
+        null,
+        __( 'Welcome', 'textdomain' ),
+        __( 'Welcome', 'textdomain' ),
+        'manage_options',
+        'goo1omni-donate',
+        function() {
+          include(__DIR__."/../html/page_donate.php");
+      });
     });
     add_action('wp_dashboard_setup', function() {
       global $wp_meta_boxes;
@@ -93,6 +110,7 @@ class core {
           include(__DIR__."/../html/widget_dashboard.php");
       });
     });
+    add_filter( "plugin_action_links_goo1-omni/goo1-omni.php", ["\plugins\goo1\omni\PluginInfos", "pluginlinks"]);
   }
 
   public static function adminbar_init($admin_bar) {
@@ -103,5 +121,13 @@ class core {
       "href"  => "/wp-admin/options-general.php?page=goo1omni-reporter&refurl=".urlencode("https://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"])
     );
     $admin_bar->add_node( $args );
+  }
+
+  private static function security_block_country() {
+    $a = \plugins\goo1\omni\config::get("cloudflare_admin_country");
+    if (empty($a)) return;
+    if (!in_array(($_SERVER["HTTP_CF_IPCOUNTRY"] ?? "DE"), explode(",",$a))) {
+      die("Banned for Security [CF_COUN]");
+    }
   }
 }

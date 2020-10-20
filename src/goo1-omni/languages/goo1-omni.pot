@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: goo1 Omni\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-23 12:36+0000\n"
+"POT-Creation-Date: 2020-10-20 19:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -15,19 +15,27 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.4.3; wp-5.5.1"
 
-#: classes/core.php:37
+#: classes/PluginInfos.php:8 html/page_settings.php:104
+msgid "Settings"
+msgstr ""
+
+#: classes/PluginInfos.php:9
+msgid "GET PRO"
+msgstr ""
+
+#: classes/core.php:36
 msgid "Owner"
 msgstr ""
 
-#: classes/core.php:79 classes/core.php:80
+#: classes/core.php:81 classes/core.php:82
 msgid "Help"
 msgstr ""
 
-#: classes/core.php:99
+#: classes/core.php:120
 msgid "ask Andi"
 msgstr ""
 
-#: classes/core.php:99
+#: classes/core.php:120
 msgid "need help"
 msgstr ""
 
@@ -146,6 +154,18 @@ msgstr ""
 
 #: html/page_reporter.php:129
 msgid "send your request"
+msgstr ""
+
+#: html/page_settings.php:115 html/page_settings.php:120
+msgid "Allowed Countries:"
+msgstr ""
+
+#: html/page_settings.php:115 html/page_settings.php:120
+msgid "2 letters, comma separated"
+msgstr ""
+
+#: html/page_settings.php:121
+msgid "no Cloudflare-CDN found"
 msgstr ""
 
 #. Name of the plugin

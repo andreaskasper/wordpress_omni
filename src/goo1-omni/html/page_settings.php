@@ -1,4 +1,21 @@
-<style>
+<?php
+
+use \plugins\goo1\omni\config;
+
+if (!empty($_POST["act"]) AND $_POST["act"] == "save") {
+    print_r($_POST);
+    if (!empty($_POST["cloudflare_countriesadmin"])) {
+        $a = preg_replace("@[^A-Z,]+@","", strtoupper($_POST["cloudflare_countriesadmin"]));
+        config::set("cloudflare_admin_country", $a);
+    }
+    $is_saved = true;
+}
+
+
+
+
+
+?><style>
 @import url(https://library.goo1.de/fontawesome/5/css/all.min.css);
 </style>
 <h1>goo1 Omni Einstellungen</h1>
@@ -83,6 +100,39 @@ echo('</td></tr>');
 
 echo('</table>');
 
+?>
+<h2 style="margin-top:2rem;margin-bottom: 0rem;"><?=__("Settings","goo1-omni"); ?></h2>
+
+<form method="POST">
+    <INPUT type="hidden" name="act" value="save"/>
+<table class="form-table" role="presentation"><tbody>
+
+<?php
+
+
+if (!empty($_SERVER["HTTP_CF_IPCOUNTRY"])) {
+    echo('<tr>
+    <th scope="row"><label for="fld_cloudflare_countriesadmin">'.__("Allowed Countries:","goo1-omni").'</label><div><small style="font-weight:normal;">'.__("2 letters, comma separated", "goo1-omni").'</small></div></th>
+    <td><input name="cloudflare_countriesadmin" type="text" id="fld_cloudflare_countriesadmin" value="'.(config::get("cloudflare_admin_country") ?? "").'" class="regular-text"></td>
+    </tr>');
+} else {
+    echo('<tr>
+    <th scope="row"><label for="fld_cloudflare_countriesadmin">'.__("Allowed Countries:","goo1-omni").'</label><div><small style="font-weight:normal;">'.__("2 letters, comma separated", "goo1-omni").'</small></div></th>
+    <td>'.__("no Cloudflare-CDN found", "goo1-omni").'</td>
+    </tr>');
+}
+
+?>
+
+<tr>
+    <th scope="row"></th>
+    <td><button type="submit" class="button button-primary">Änderungen speichern</button></td>
+    </tr>
+
+</tbody></table>
+</form>
+
+<?php
 
 echo('<div class="notice notice-warning" style="margin-top: 100px;"><i class="fas fa-user-hard-hat fa-2x" style="float:left; margin: 0.3rem 0.5rem 00rem 0;"></i><p>TODO: Noch ein paar weitere Abfragen und Features.</p></div>');
 
