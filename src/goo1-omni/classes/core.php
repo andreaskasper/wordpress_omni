@@ -68,7 +68,7 @@ class core {
     );
 
     wp_enqueue_style("fontawesome", "https://library.goo1.de/fontawesome/5/css/all.min.css", array(), "5", "all");
-    
+    do_action("goo1_omni_loaded");
   }
 
   public static function action_admin_init() {
