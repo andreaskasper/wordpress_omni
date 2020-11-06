@@ -118,7 +118,7 @@ class core {
     $args = array(
       'id'    => 'hdf_bugreports',
       'title' => '<span style="color: #ff0000; text-shadow: #000 0 0 1px; font-weight: bold;"><i class="far fa-life-ring" style="font-family: \'Font Awesome 5 Pro\'; font-weight: 900; margin-right: 0.5rem; font-style:normal"></i>'.($is_personal?__("ask Andi", "goo1-omni"):__("need help", "goo1-omni")).'</span>',
-      "href"  => "/wp-admin/options-general.php?page=goo1omni-reporter&refurl=".urlencode("https://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"])
+      "href"  => site_url("/wp-admin/options-general.php?page=goo1omni-reporter&refurl=".urlencode("https://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]))
     );
     $admin_bar->add_node( $args );
   }
