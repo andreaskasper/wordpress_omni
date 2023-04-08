@@ -84,7 +84,7 @@ if ($plugin_available) {
             $text[] = 'Das Plugin Wordfence fehlt!';
         }
 
-        Nagios::send($state, $status . '#' . implode($text, ';'));
+        Nagios::send($state, $status . '#' . implode(";", $text));
         exit;
     }
 
