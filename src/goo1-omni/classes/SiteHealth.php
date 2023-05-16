@@ -9,6 +9,10 @@ class SiteHealth {
             "label" => __( "CDN Status" ),
             "test"  => [__CLASS__, "test_cloudflare_active"],
         );
+        $tests["direct"]["goo1_blog_public"] = array(
+            "label" => __( "Blog public" ),
+            "test"  => [__CLASS__, "test_blog_public"],
+        );
         return $tests;
     }
 
@@ -32,6 +36,27 @@ class SiteHealth {
         }
     
         //$result['actions'] .= var_export($_SERVER, true);
+        return $result;
+    }
+
+    public static function test_blog_public() {
+        $result = array(
+            'label'       => __( 'Indexing allowed' ),
+            'status'      => 'good',
+            'badge'       => array(
+                'label' => __( 'Google' ),
+                'color' => 'blue',
+            ),
+            'description' => '<p>The page is public!</p>',
+            'actions'     => '',
+            'test'        => 'goo1_blog_public',
+        );
+
+        if( 0 == get_option( "blog_public" )){
+            $result['status'] = 'recommended';
+            $result['label'] = __( 'Blog is not public' );
+            $result['description'] = '<p>Search Engines are not allowed to index the website. This is not good, if the website is public.</p>';
+        }
         return $result;
     }
 
