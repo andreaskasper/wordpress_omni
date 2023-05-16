@@ -40,7 +40,7 @@ if (is_plugin_active("two-factor/two-factor.php"))
     else echo('<span style="color:#f00"><i class="fas fa-times"></i> Plugin wurde nicht gefunden.      <a class="" href="'.url_install_plugin("two-factor").'"><i class="far fa-save"></i> installieren</a></span>');
 echo('</td></tr>');*/
 
-echo('<tr><td colspan="2"><b>Plugins:</b></td></tr>');
+echo('<tr><td colspan="3"><h2>Plugins:</h2></td></tr>');
 
 
 if (is_plugin_active("elementor/elementor.php")) {
@@ -82,32 +82,30 @@ echo('</td></tr>');
 
 
 
-echo('<tr><td colspan="2"><b>Useful Plugins:</b></td></tr>');
+echo('<tr><td colspan="3"><h2>Useful Plugins:</h2></td></tr>');
 
 
 
-echo('<tr><th>Credit Tracker:</th>');
-echo('<td>');
-if (is_plugin_active("credit-tracker/credit-tracker.php")) 
-    echo('<span style="color:#080;"><i class="fas fa-check"></i> Credit Tracker ist installiert</span>'); 
-    else echo('<span style="color:#f00"><i class="fas fa-times"></i> Credit Tracker Plugin wurde nicht gefunden.      <a class="" href="'.url_install_plugin("credit-tracker").'"><i class="far fa-save"></i> installieren</a></span>');
-echo('</td></tr>');
+plugin_row("cloudflare-flexible-ssl", "Cloudflare Flexible SSL");
+plugin_row("better-search-replace", "Better Search Replace");
+plugin_row("credit-tracker", "Credit Tracker");
+plugin_row("contextual-related-posts", "Contextual Related Posts");
+plugin_row("complianz-gdpr", "Complianz GDRP");
+plugin_row("simply-static", "Simply Static");
+plugin_row("wp-admin-ui-customize", "WP Admin UI Customize");
+plugin_row("redirection", "Redirection");
 
-echo('<tr><th>Contextual Related Posts:</th>');
-echo('<td>');
-if (is_plugin_active("contextual-related-posts/contextual-related-posts.php")) 
-    echo('<span style="color:#080;"><i class="fas fa-check"></i> Contextual Related Posts ist installiert</span>'); 
-    else echo('<span style="color:#f00"><i class="fas fa-times"></i> Contextual Related Posts Plugin wurde nicht gefunden.      <a class="" href="'.url_install_plugin("contextual-related-posts").'"><i class="far fa-save"></i> installieren</a></span>');
-echo('</td></tr>');
-
-echo('<tr><th>WP Admin UI Customize:</th>');
-echo('<td>');
-if (is_plugin_active("wp-admin-ui-customize/wp-admin-ui-customize.php")) 
-    echo('<span style="color:#080;"><i class="fas fa-check"></i> WP Admin UI Customiz ist installiert</span>'); 
-    else echo('<span style="color:#f00"><i class="fas fa-times"></i> WP Admin UI Customiz wurde nicht gefunden.      <a class="" href="'.url_install_plugin("wp-admin-ui-customize").'"><i class="far fa-save"></i> installieren</a></span>');
-echo('</td></tr>');
 
 echo('</table>');
+
+function plugin_row($plugin, $title) {
+    echo('<tr><th>'.$title.':</th>');
+    echo('<td>');
+    if (is_plugin_active($plugin."/".$plugin.".php")) 
+        echo('<span style="color:#080;"><i class="fas fa-check"></i> Plugin installed</span>'); 
+        else echo('<span style="color:#f00"><i class="fas fa-times"></i> Plugin not found.</td><td><a class="" href="'.url_install_plugin("$plugin").'"><i class="far fa-save"></i> installieren</a></span>');
+    echo('</td></tr>');
+}
 
 ?>
 <h2 style="margin-top:2rem;margin-bottom: 0rem;"><?=__("Settings","goo1-omni"); ?></h2>
