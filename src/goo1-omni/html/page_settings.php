@@ -102,8 +102,8 @@ function plugin_row($plugin, $title) {
     echo('<tr><th>'.$title.':</th>');
     echo('<td>');
     if (is_plugin_active($plugin."/".$plugin.".php")) 
-        echo('<span style="color:#080;"><i class="fas fa-check"></i> Plugin installed</span>'); 
-        else echo('<span style="color:#f00"><i class="fas fa-times"></i> Plugin not found.</td><td><a class="" href="'.url_install_plugin("$plugin").'"><i class="far fa-save"></i> installieren</a></span>');
+        echo('<span style="color:#080;"><i class="fas fa-check"></i> '.__("Plugin installed.", "goo1-omni").'</span>'); 
+        else echo('<span style="color:#f00"><i class="fas fa-times"></i> '.__("Plugin not found.", "goo1-omni").'</td><td><a class="" href="'.url_install_plugin($plugin).'"><i class="far fa-save"></i> '.__("install", "goo1-omni").'</a></span>');
     echo('</td></tr>');
 }
 
@@ -133,7 +133,7 @@ if (!empty($_SERVER["HTTP_CF_IPCOUNTRY"])) {
 
 <tr>
     <th scope="row"></th>
-    <td><button type="submit" class="button button-primary">Änderungen speichern</button></td>
+    <td><button type="submit" class="button button-primary"><?=__("save changes", "goo1-omni"); ?></button></td>
     </tr>
 
 </tbody></table>
