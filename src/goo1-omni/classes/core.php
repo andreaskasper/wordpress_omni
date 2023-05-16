@@ -21,6 +21,8 @@ class core {
       $a = new CloudflareFlexibleSSL();
       $a->run();
     }
+
+    add_filter( 'site_status_tests', ["\plugins\goo1\omni\SiteHealth", "init"]);
   }
   
   public static function my_two_factor_providers($methods) {
