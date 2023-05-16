@@ -1,5 +1,5 @@
 {
-	"version" => "0.00.20200418",
+	"version" : "0.00.20200418",
 	"download_url" : "https://rudrastyh.com/misha-plugin.zip",
 	"requires" : "3.0",
 	"tested" : "4.8.1",
