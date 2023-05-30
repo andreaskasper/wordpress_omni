@@ -1,4 +1,4 @@
-# wordpress_omni
+# wordpress_omni [![Maintained by Andreas Kasper](https://img.shields.io/badge/Maintained%20by-Andreas%20Kasper-blue.svg?longCache=true&style=for-the-badge)](https://github.com/AndreasKasper)
 Wordpress plugin that adds features that where often needed.
 
 #### Bugs & Issues:
