@@ -5,6 +5,7 @@ Wordpress plugin that adds features that where often needed.
 ![Github Issues](https://img.shields.io/github/issues/andreaskasper/wordpress_omni.svg)
 
 ### Stats:
+![maintenance-status](https://img.shields.io/badge/maintenance-actively--developed-brightgreen.svg)
 ![Activities](https://img.shields.io/github/commit-activity/m/andreaskasper/wordpress_omni.svg)
 ![Last Commit](https://img.shields.io/github/last-commit/andreaskasper/wordpress_omni.svg)
 ![Code Languages](https://img.shields.io/github/languages/top/andreaskasper/wordpress_omni.svg)
