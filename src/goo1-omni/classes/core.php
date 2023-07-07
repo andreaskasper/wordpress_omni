@@ -17,6 +17,12 @@ class core {
         'callback' => ["\plugins\goo1\omni\NagiosVersions", "test"],
       ));
     });
+    add_action( 'rest_api_init', function () {
+      register_rest_route( 'nagios', '/disk.json', array(
+        'methods' => 'GET',
+        'callback' => ["\plugins\goo1\omni\NagiosDisk", "test"],
+      ));
+    });
     if (!empty($_SERVER["HTTP_CF_RAY"])) {
       $a = new CloudflareFlexibleSSL();
       $a->run();
