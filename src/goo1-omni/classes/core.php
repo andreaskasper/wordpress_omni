@@ -28,7 +28,10 @@ class core {
       $a->run();
     }
 
-    add_filter( 'site_status_tests', ["\plugins\goo1\omni\SiteHealth", "init"]);
+    //add_filter( 'site_status_tests', ["\plugins\goo1\omni\SiteHealth", "init"]);
+    add_filter( 'site_status_tests', function( $tests ) {
+      return \plugins\goo1\omni\SiteHealth::init($tests);
+    });
   }
   
   public static function my_two_factor_providers($methods) {
