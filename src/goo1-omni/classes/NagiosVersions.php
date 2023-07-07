@@ -78,10 +78,10 @@ if ($plugin_available) {
             $state = 0;    
         }
 
-        if (!is_plugin_active("wordfence/wordfence.php")) {
-            $status = 'CRITICAL';
+        if (!is_plugin_active("wordfence/wordfence.php") AND !is_plugin_active("better-wp-security/better-wp-security.php")) {
+            $status = 'WARNING';
             $state = 1;
-            $text[] = 'Das Plugin Wordfence fehlt!';
+            $text[] = 'No Application Firewall found! Install Wordfence or iThemes Security.';
         }
 
         Nagios::send($state, $status . '#' . implode(";", $text));
