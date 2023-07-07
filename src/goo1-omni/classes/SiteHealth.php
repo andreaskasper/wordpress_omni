@@ -172,7 +172,7 @@ class SiteHealth {
 
     public static function test_plugins_elementor() {
         $result = array(
-            'label'       => __( 'Updraft Plus is installed' ),
+            'label'       => __( 'Elementor okay!' ),
             'status'      => 'good',
             'badge'       => array(
                 'label' => __( 'Plugins' ),
@@ -211,7 +211,7 @@ class SiteHealth {
 
     public static function test_plugins_updraftplus() {
         $result = array(
-            'label'       => __( 'Updraft Plus is installed' ),
+            'label'       => __( 'Updraft Plus okay!' ),
             'status'      => 'good',
             'badge'       => array(
                 'label' => __( 'Plugins' ),
