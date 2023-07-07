@@ -34,6 +34,10 @@ class SiteHealth {
             "label" => __( "ManageWP" ),
             "test"  => [__CLASS__, "test_plugins_worker"],
         );
+        $tests["direct"]["goo1_plugins_elementor"] = array(
+            "label" => __( "Elementor" ),
+            "test"  => [__CLASS__, "test_plugins_elementor"],
+        );
         $tests["direct"]["goo1_plugins_updraftplus"] = array(
             "label" => __( "Updraft Plus" ),
             "test"  => [__CLASS__, "test_plugins_updraftplus"],
@@ -166,6 +170,45 @@ class SiteHealth {
         return $result;
     }
 
+    public static function test_plugins_elementor() {
+        $result = array(
+            'label'       => __( 'Updraft Plus is installed' ),
+            'status'      => 'good',
+            'badge'       => array(
+                'label' => __( 'Plugins' ),
+                'color' => 'blue',
+            ),
+            'description' => '<p></p>',
+            'actions'     => '',
+            'test'        => 'goo1_plugins_elementor',
+        );
+
+        if (!is_plugin_active("elementor/elementor.php")) {
+            $result['status'] = 'good';
+            $result['label'] = __( 'Elementor deactivated.' );
+            $result["description"] = __("No checks are running, because Elementor is not installed or deactivated.");
+            return $result;
+        }
+
+        if (empty(get_option( "elementor_font_awesome_pro_kit_id" ))) {
+            $result['status'] = 'recommended';
+            $result['label'] = __( 'No FontAwesome kit ID is set for Elementor' );
+            $result["description"] = __("To enable all Icons you should add a FontAwesome kit id. Andreas can help you.");
+            //$result["actions"] = '<a href="/wp-admin/options-general.php?page=updraftplus#updraft-navtab-settings-content">Updraft Auto-Backup Settings</a>';
+            return $result;
+        }
+
+        if (get_option( "current_theme" ) != "Hello Elementor") {
+            $result['status'] = 'recommended';
+            $result['label'] = __( 'Hello Elementor Theme is not used' );
+            $result["description"] = __("If you're using Elementor the Hello Elementor Theme is highly recommended. If you're using a child-theme of it, please ignore this message.");
+            //$result["actions"] = '<a href="/wp-admin/options-general.php?page=updraftplus#updraft-navtab-settings-content">Updraft Auto-Backup Settings</a>';
+            return $result;
+        }
+
+        return $result;
+    }
+
     public static function test_plugins_updraftplus() {
         $result = array(
             'label'       => __( 'Updraft Plus is installed' ),
@@ -185,6 +228,39 @@ class SiteHealth {
             $result["description"] = __("Updraft Plus helps you to backup your website in case you need it later.");
             return $result;
         }
+
+        if (get_option( "updraft_service" ) != "dropbox") {
+            $result['status'] = 'recommended';
+            $result['label'] = __( 'Use a remote backup for Updraft Plus' );
+            $result["description"] = __("You should save your backups remotely, so if the server crashes, you still have a backup.");
+            $result["actions"] = '<a href="/wp-admin/options-general.php?page=updraftplus#updraft-navtab-settings-content">Updraft Auto-Backup Settings</a>';
+            return $result;
+        }
+
+        if (get_option( "updraft_interval" ) == "manual") {
+            $result['status'] = 'recommended';
+            $result['label'] = __( 'Updraft Plus interval deactivated' );
+            $result["description"] = __("The interval for the backup should be daily or weekly.");
+            $result["actions"] = '<a href="/wp-admin/options-general.php?page=updraftplus#updraft-navtab-settings-content">Updraft Auto-Backup Settings</a>';
+            return $result;
+        }
+
+        if (get_option( "updraft_retain" ) < 10) {
+            $result['status'] = 'recommended';
+            $result['label'] = __( 'Updraft Plus backups less than 10' );
+            $result["description"] = __("You should add more retained backups to rollback at least 6 months.");
+            $result["actions"] = '<a href="/wp-admin/options-general.php?page=updraftplus#updraft-navtab-settings-content">Updraft Auto-Backup Settings</a>';
+            return $result;
+        }
+
+        if (get_option( "updraft_retain_db" ) < 10) {
+            $result['status'] = 'recommended';
+            $result['label'] = __( 'Updraft Plus DB backups less than 10' );
+            $result["description"] = __("You should add more retained backups to rollback at least 6 months.");
+            $result["actions"] = '<a href="/wp-admin/options-general.php?page=updraftplus#updraft-navtab-settings-content">Updraft Auto-Backup Settings</a>';
+            return $result;
+        }
+
         return $result;
     }
 
@@ -227,5 +303,10 @@ class SiteHealth {
 
         return $result;
     }
+
+    /*
+        Next Tests:
+   
+    */
 
 }
