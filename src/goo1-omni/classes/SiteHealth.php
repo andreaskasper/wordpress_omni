@@ -157,7 +157,7 @@ class SiteHealth {
             'test'        => 'goo1_plugins_worker',
         );
 
-        if (is_plugin_active("worker/worker.php")) {
+        if (!is_plugin_active("worker/worker.php")) {
             $result['status'] = 'recommended';
             $result['label'] = __( 'ManageWP should be installed' );
             $result["description"] = __("ManageWP helps you to manage all your Wordpress Pages from one instance.");
@@ -179,7 +179,7 @@ class SiteHealth {
             'test'        => 'goo1_plugins_updraftplus',
         );
 
-        if (is_plugin_active("updraftplus/updraftplus.php")) {
+        if (!is_plugin_active("updraftplus/updraftplus.php")) {
             $result['status'] = 'recommended';
             $result['label'] = __( 'Updraft Plus should be installed' );
             $result["description"] = __("Updraft Plus helps you to backup your website in case you need it later.");
