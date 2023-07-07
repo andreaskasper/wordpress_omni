@@ -30,6 +30,18 @@ class SiteHealth {
             "label" => __( "Application Firewall" ),
             "test"  => [__CLASS__, "test_application_firewall"],
         );
+        $tests["direct"]["goo1_plugins_worker"] = array(
+            "label" => __( "ManageWP" ),
+            "test"  => [__CLASS__, "test_plugins_worker"],
+        );
+        $tests["direct"]["goo1_plugins_updraftplus"] = array(
+            "label" => __( "Updraft Plus" ),
+            "test"  => [__CLASS__, "test_plugins_updraftplus"],
+        );
+        $tests["direct"]["goo1_blog_comments"] = array(
+            "label" => __( "Comments" ),
+            "test"  => [__CLASS__, "test_blog_comments"],
+        );
         return $tests;
     }
 
@@ -132,5 +144,71 @@ class SiteHealth {
         return $result;
     }
 
+    public static function test_plugins_worker() {
+        $result = array(
+            'label'       => __( 'ManageWP is installed' ),
+            'status'      => 'good',
+            'badge'       => array(
+                'label' => __( 'Plugins' ),
+                'color' => 'blue',
+            ),
+            'description' => '<p></p>',
+            'actions'     => '',
+            'test'        => 'goo1_plugins_worker',
+        );
+
+        if (is_plugin_active("worker/worker.php")) {
+            $result['status'] = 'recommended';
+            $result['label'] = __( 'ManageWP should be installed' );
+            $result["description"] = __("ManageWP helps you to manage all your Wordpress Pages from one instance.");
+            return $result;
+        }
+        return $result;
+    }
+
+    public static function test_plugins_updraftplus() {
+        $result = array(
+            'label'       => __( 'Updraft Plus is installed' ),
+            'status'      => 'good',
+            'badge'       => array(
+                'label' => __( 'Plugins' ),
+                'color' => 'blue',
+            ),
+            'description' => '<p></p>',
+            'actions'     => '',
+            'test'        => 'goo1_plugins_updraftplus',
+        );
+
+        if (is_plugin_active("updraftplus/updraftplus.php")) {
+            $result['status'] = 'recommended';
+            $result['label'] = __( 'Updraft Plus should be installed' );
+            $result["description"] = __("Updraft Plus helps you to backup your website in case you need it later.");
+            return $result;
+        }
+        return $result;
+    }
+
+    public static function test_blog_comments() {
+        $result = array(
+            'label'       => __( 'Comments are okay on the blog' ),
+            'status'      => 'good',
+            'badge'       => array(
+                'label' => __( 'Wordpress' ),
+                'color' => 'blue',
+            ),
+            'description' => '<p></p>',
+            'actions'     => '',
+            'test'        => 'goo1_blog_comments',
+        );
+
+        if (get_option( "default_comment_status" ) == "open") {
+            $result['status'] = 'recommended';
+            $result['label'] = __( "Comments are open. SPAM risk" );
+            $result["description"] = __("Your wordpress installation allows to add comments. This is a high risk to get spammed. You should disable this setting");
+            $result["actions"] = '<a href="/wp-admin/options-discussion.php">Comment Settings</a>';
+            return $result;
+        }
+        return $result;
+    }
 
 }
