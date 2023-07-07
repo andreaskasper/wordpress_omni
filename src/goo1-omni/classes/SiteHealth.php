@@ -208,6 +208,23 @@ class SiteHealth {
             $result["actions"] = '<a href="/wp-admin/options-discussion.php">Comment Settings</a>';
             return $result;
         }
+
+        if (get_option( "default_ping_status" ) == "open") {
+            $result['status'] = 'recommended';
+            $result['label'] = __( "Comments Ping Status is open. SPAM risk" );
+            $result["description"] = __("Your wordpress installation allows to add comments. This is a high risk to get spammed. You should disable this setting");
+            $result["actions"] = '<a href="/wp-admin/options-discussion.php">Comment Settings</a>';
+            return $result;
+        }
+
+        if (get_option( "default_pingback_flag" ) == 1) {
+            $result['status'] = 'recommended';
+            $result['label'] = __( "Comments Ping Flag is on. SPAM risk" );
+            $result["description"] = __("Your wordpress installation allows to add comments. This is a high risk to get spammed. You should disable this setting");
+            $result["actions"] = '<a href="/wp-admin/options-discussion.php">Comment Settings</a>';
+            return $result;
+        }
+
         return $result;
     }
 
