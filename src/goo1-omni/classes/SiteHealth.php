@@ -46,6 +46,10 @@ class SiteHealth {
             "label" => __( "Comments" ),
             "test"  => [__CLASS__, "test_blog_comments"],
         );
+        $tests["direct"]["goo1_nagios_lastused"] = array(
+            "label" => __( "Nagios Last Used" ),
+            "test"  => [__CLASS__, "test_nagios_lastused"],
+        );
         return $tests;
     }
 
@@ -149,6 +153,7 @@ class SiteHealth {
     }
 
     public static function test_plugins_worker() {
+        global $wpdb;
         $result = array(
             'label'       => __( 'ManageWP is installed' ),
             'status'      => 'good',
@@ -167,6 +172,18 @@ class SiteHealth {
             $result["description"] = __("ManageWP helps you to manage all your Wordpress Pages from one instance.");
             return $result;
         }
+
+        $row = $wpdb->get_row( "SELECT * FROM {$wpdb->options} WHERE option_name LIKE 'mwp_key_last_used_%' LIMIT 0,1" );
+        if (!empty($row["option_value"])) {
+            if ($row["option_value"] > time()-7*86400) {
+                $result["description"] = __("ManageWP helps you to manage all your Wordpress Pages from one instance. Last connection time ".date("Y-m-d H:i:s T", $row["option_value"]));
+            } else {
+                $result['status'] = 'recommended';
+                $result['label'] = __( "ManageWP had no connection for 7 days" );
+                $result["description"] = __("ManageWP wasn't connected to the server in the last 7 days. Please check the connection. Last connection time ".date("Y-m-d H:i:s T", $row["option_value"]));
+            }
+        }
+
         return $result;
     }
 
@@ -300,6 +317,39 @@ class SiteHealth {
             $result["actions"] = '<a href="/wp-admin/options-discussion.php">Comment Settings</a>';
             return $result;
         }
+
+        return $result;
+    }
+
+    public static function test_nagios_lastused() {
+        $result = array(
+            'label'       => __( 'Nagios is not activated' ),
+            'status'      => 'recommended',
+            'badge'       => array(
+                'label' => __( 'Wordpress' ),
+                'color' => 'blue',
+            ),
+            'description' => '<p>Nagios helps you to keep the Website save.</p>',
+            'actions'     => '',
+            'test'        => 'goo1_nagios_lastused',
+        );
+
+        $a = get_option("goo1_omni_nagios_ts_lastused");
+        if ($a == false) {
+            return $result;
+        }
+
+        if ($a < time()-12*3600) {
+            $result['status'] = 'recommended';
+            $result['label'] = __( "Nagios Connection is not working anymore" );
+            $result["description"] = __("We don't get any new request from Nagios. Last Connection: ".date("Y-m-d H:i:s T", $a));
+            //$result["actions"] = '<a href="/wp-admin/options-discussion.php">Comment Settings</a>';
+            return $result;
+        }
+
+        $result['status'] = 'good';
+        $result['label'] = __( "Nagios check okay" );
+        $result["description"] = __("Nagios is checking your website for problems. Last Connection: ".date("Y-m-d H:i:s T", $a));
 
         return $result;
     }

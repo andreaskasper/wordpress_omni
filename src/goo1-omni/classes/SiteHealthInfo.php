@@ -20,7 +20,12 @@ class SiteHealthInfo {
                 'license' => array(
                     'label'    => __( 'License', 'my-plugin-slug' ),
                     'value'   => "Free License",
-                    'private' => false,
+                    'private' => false
+                ),
+                'nagioslastused' => array(
+                    'label'    => __( 'Nagios Last Used', 'my-plugin-slug' ),
+                    'value'   => date("Y-m-d H:i:s T", get_option("goo1_omni_nagios_ts_lastused", 0)),
+                    'private' => false
                 ),
             ),
         );

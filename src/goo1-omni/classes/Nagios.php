@@ -18,5 +18,13 @@ class Nagios {
         die(json_encode($out));
     }
 
+    public static function set_lastusedflag() {
+        if(get_option("goo1_omni_nagios_ts_lastused")) {
+            update_option("goo1_omni_nagios_ts_lastused", time());
+        } else {
+            add_option("goo1_omni_nagios_ts_lastused", time());
+        }
+    }
+
 
 }
