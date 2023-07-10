@@ -166,7 +166,7 @@ class SiteHealth {
             'test'        => 'goo1_plugins_worker',
         );
 
-        if (!is_plugin_active("worker/worker.php")) {
+        if (!is_plugin_active("worker/init.php")) {
             $result['status'] = 'recommended';
             $result['label'] = __( 'ManageWP should be installed' );
             $result["description"] = __("ManageWP helps you to manage all your Wordpress Pages from one instance.");
