@@ -173,7 +173,7 @@ class SiteHealth {
             return $result;
         }
 
-        $row = $wpdb->get_row( "SELECT * FROM {$wpdb->options} WHERE option_name LIKE 'mwp_key_last_used_%' LIMIT 0,1" );
+        $row = $wpdb->get_row( "SELECT * FROM {$wpdb->options} WHERE option_name LIKE 'mwp_key_last_used_%' LIMIT 0,1", ARRAY_A );
         if (!empty($row["option_value"])) {
             if ($row["option_value"] > time()-7*86400) {
                 $result["description"] = __("ManageWP helps you to manage all your Wordpress Pages from one instance. Last connection time ".date("Y-m-d H:i:s T", $row["option_value"]));
