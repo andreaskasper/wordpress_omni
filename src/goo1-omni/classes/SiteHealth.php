@@ -110,19 +110,19 @@ class SiteHealth {
                 'label' => __( 'SERVER' ),
                 'color' => 'blue',
             ),
-            'description' => '<p>You have enough space on the webserver. It\'s only '.$proz.'% filled.</p>',
+            'description' => '<p>You have enough space on the webserver. Free '.self::format_bytes($df,1).'/'.self::format_bytes($ds,1).';  It\'s only '.$proz.'% filled.</p>',
             'actions'     => '',
             'test'        => 'goo1_blog_diskspace',
         );
 
         if ($df/$ds <= 0.2) {
             $result['status'] = 'recommended';
-            $result['label'] = __( 'Less space on the webserver. '.number_format($proz, 1).'% full' );
+            $result['label'] = __( 'Less space on the webserver. Free '.self::format_bytes($df,1).'/'.self::format_bytes($ds,1).'; '.number_format($proz, 1).'% full' );
         }
 
         if ($df/$ds <= 0.05) {
             $result['status'] = 'critical';
-            $result['label'] = __( 'CRITICAL - Very less space on the webserver. '.number_format($proz, 1).'% full' );
+            $result['label'] = __( 'CRITICAL - Very less space on the webserver. Free '.self::format_bytes($df,1).'/'.self::format_bytes($ds,1).'; '.number_format($proz, 1).'% full' );
         }
     
         return $result;
@@ -352,6 +352,22 @@ class SiteHealth {
         $result["description"] = __("Nagios is checking your website for problems. Last Connection: ".date("Y-m-d H:i:s T", $a));
 
         return $result;
+    }
+
+    /* -------------- helpers ------------------------------ */
+
+    public static function format_bytes($bytes, $precision = 2) { 
+        $units = array('B', 'KB', 'MB', 'GB', 'TB'); 
+    
+        $bytes = max($bytes, 0); 
+        $pow = floor(($bytes ? log($bytes) : 0) / log(1024)); 
+        $pow = min($pow, count($units) - 1); 
+    
+        // Uncomment one of the following alternatives
+        $bytes /= pow(1024, $pow);
+        // $bytes /= (1 << (10 * $pow)); 
+    
+        return round($bytes, $precision) . ' ' . $units[$pow]; 
     }
 
     /*
