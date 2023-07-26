@@ -2,6 +2,8 @@
 
 namespace plugins\goo1\omni;
 
+use \plugins\goo1\omni\config;
+
 class core {
 	
   public static function init() {
@@ -26,6 +28,15 @@ class core {
     if (!empty($_SERVER["HTTP_CF_RAY"])) {
       $a = new CloudflareFlexibleSSL();
       $a->run();
+    }
+
+    /*Is the page static?*/
+    if (config::get("page_is_static_header") AND (strpos($_SERVER["REQUEST_URI"],"/wp-") === false)) {
+      add_action( 'send_headers', function() {
+        if (!\is_user_logged_in()) {
+          header('Cache-Control: public, max-age: 86400, s-maxage=86400, stale-while-revalidate=86400000, stale-if-error=86400000');
+        }
+      });
     }
 
     /*Site Health Info START*/

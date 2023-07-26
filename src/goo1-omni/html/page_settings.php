@@ -3,11 +3,11 @@
 use \plugins\goo1\omni\config;
 
 if (!empty($_POST["act"]) AND $_POST["act"] == "save") {
-    print_r($_POST);
     if (!empty($_POST["cloudflare_countriesadmin"])) {
         $a = preg_replace("@[^A-Z,]+@","", strtoupper($_POST["cloudflare_countriesadmin"]));
         config::set("cloudflare_admin_country", $a);
     }
+    config::set("page_is_static_header", !empty($_POST["page_is_static_header"]));
     $is_saved = true;
 }
 
@@ -21,6 +21,10 @@ if (!empty($_POST["act"]) AND $_POST["act"] == "save") {
 <h1>goo1 Omni Einstellungen</h1>
 <hr class="wp-header-end">
 
+
+<?php
+if (!empty($is_saved)) echo('<div class="notice notice-success"><i class="far fa-regular fa-circle-check fa-2x" style="float:left; margin: 0.3rem 0.5rem 00rem 0;"></i><p>saved...</p></div>');
+?>
 
 <style>
 #list01 th { text-align: left; }
@@ -118,16 +122,23 @@ function plugin_row($plugin, $title) {
 
 
 if (!empty($_SERVER["HTTP_CF_IPCOUNTRY"])) {
-    echo('<tr>
+    echo('<tr style="vertical-align: top;">
     <th scope="row"><label for="fld_cloudflare_countriesadmin">'.__("Allowed Countries:","goo1-omni").'</label><div><small style="font-weight:normal;">'.__("2 letters, comma separated", "goo1-omni").'</small></div></th>
     <td><input name="cloudflare_countriesadmin" type="text" id="fld_cloudflare_countriesadmin" value="'.(config::get("cloudflare_admin_country") ?? "").'" class="regular-text"></td>
     </tr>');
 } else {
-    echo('<tr>
+    echo('<tr style="vertical-align: top;">
     <th scope="row"><label for="fld_cloudflare_countriesadmin">'.__("Allowed Countries:","goo1-omni").'</label><div><small style="font-weight:normal;">'.__("2 letters, comma separated", "goo1-omni").'</small></div></th>
     <td>'.__("no Cloudflare-CDN found", "goo1-omni").'</td>
     </tr>');
 }
+
+
+
+    echo('<tr style="vertical-align: top;">
+    <th scope="row"><label for="fld_page_is_static_header">'.__("Stasis:","goo1-omni").'</label><div><small style="font-weight:normal;">'.__("make the page static for a while to improve speed. Don't mark if you change the page regularly!", "goo1-omni").'</small></div></th>
+    <td><input name="page_is_static_header" type="checkbox" id="fld_page_is_static_header" value="1" '.(config::get("page_is_static_header")?'CHECKED="CHECKED"':'').' > '.__("page in stasis", "goo1-omni").'</td>
+    </tr>');
 
 ?>
 
