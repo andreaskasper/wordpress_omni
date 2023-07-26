@@ -107,10 +107,10 @@ class SiteHealth {
             'label'       => __( 'Enough space on the webserver. '.number_format($proz, 1).'% full' ),
             'status'      => 'good',
             'badge'       => array(
-                'label' => __( 'SERVER' ),
+                'label' => __( 'Server' ),
                 'color' => 'blue',
             ),
-            'description' => '<p>You have enough space on the webserver. Free '.self::format_bytes($df,1).'/'.self::format_bytes($ds,1).';  It\'s only '.$proz.'% filled.</p>',
+            'description' => '<p>Space is essential for your website to run. You should always have at least 20% restspace on your server.</p><p>Total size: '.self::format_bytes($ds,2).'<br/>Usage: '.self::format_bytes($ds-$df,2).'<br/>Free: '.self::format_bytes($df,1).'<br/>'.number_format($proz, 2).'% filled.</p>',
             'actions'     => '',
             'test'        => 'goo1_blog_diskspace',
         );
@@ -133,11 +133,11 @@ class SiteHealth {
             'label'       => __( 'Application Firewall should be installed' ),
             'status'      => 'recommended',
             'badge'       => array(
-                'label' => __( 'WORDPRESS' ),
+                'label' => __( 'Security' ),
                 'color' => 'blue',
             ),
-            'description' => '<p>You should install an application firewall to secure the wordpress page</p>',
-            'actions'     => '',
+            'description' => '<p>You should install an application firewall to secure the wordpress page</p><p>Example plugins are itheme Security or Wordfence.</p>',
+            'actions'     => '<a href="/wp-admin/options-general.php?page=goo1omni-settings">show recommendations</a>',
             'test'        => 'goo1_application_firewall',
         );
 
@@ -196,7 +196,7 @@ class SiteHealth {
                 'color' => 'blue',
             ),
             'description' => '<p></p>',
-            'actions'     => '',
+            'actions'     => '<a href="/wp-admin/admin.php?page=elementor#tab-integrations">Elementor Settings</a>',
             'test'        => 'goo1_plugins_elementor',
         );
 
@@ -210,7 +210,7 @@ class SiteHealth {
         if (empty(get_option( "elementor_font_awesome_pro_kit_id" ))) {
             $result['status'] = 'recommended';
             $result['label'] = __( 'No FontAwesome kit ID is set for Elementor' );
-            $result["description"] = __("To enable all Icons you should add a FontAwesome kit id. Andreas can help you.");
+            $result["description"] = __("To enable all Icons in Elementor you should add a FontAwesome kit id. Andreas can help you.<!-- 8d469e09fc -->");
             //$result["actions"] = '<a href="/wp-admin/options-general.php?page=updraftplus#updraft-navtab-settings-content">Updraft Auto-Backup Settings</a>';
             return $result;
         }
