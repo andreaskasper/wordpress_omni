@@ -2,8 +2,6 @@
 
 namespace plugins\goo1\omni;
 
-use \plugins\goo1\omni\config;
-
 class core {
 	
   public static function init() {
@@ -30,14 +28,12 @@ class core {
       $a->run();
     }
 
-    /*Is the page static?*/
-    if (config::get("page_is_static_header") AND (strpos($_SERVER["REQUEST_URI"],"/wp-") === false)) {
-      add_action( 'send_headers', function() {
-        if (!\is_user_logged_in()) {
-          header('Cache-Control: public, max-age: 86400, s-maxage=86400, stale-while-revalidate=86400000, stale-if-error=86400000');
-        }
-      });
-    }
+    /*oAuth Login*/
+    add_action('login_form', ["\plugins\goo1\omni\oAuthDanceapp", "add_login_button"], 999);
+    add_action('login_init', function() {
+      if (!empty($_GET["oauth"])) \plugins\goo1\omni\oAuthDanceapp::handle_oauthdanceapp();
+    });
+    
 
     /*Site Health Info START*/
     //add_filter( 'site_status_tests', ["\plugins\goo1\omni\SiteHealth", "init"]);
@@ -154,6 +150,7 @@ class core {
   private static function security_block_country() {
     $a = \plugins\goo1\omni\config::get("cloudflare_admin_country");
     if (empty($a)) return;
+    if ($a == ",") return;
     if (!in_array(($_SERVER["HTTP_CF_IPCOUNTRY"] ?? "DE"), explode(",",$a))) {
       die("Banned for Security [CF_COUN]");
     }
