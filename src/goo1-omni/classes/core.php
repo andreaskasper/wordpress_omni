@@ -33,6 +33,11 @@ class core {
     add_action('login_init', function() {
       if (!empty($_GET["oauth"])) \plugins\goo1\omni\oAuthDanceapp::handle_oauthdanceapp();
     });
+    add_action('show_user_profile', ["\plugins\goo1\omni\oAuthDanceapp", "add_field_to_user_profile"]);
+    add_action('edit_user_profile', ["\plugins\goo1\omni\oAuthDanceapp", "add_field_to_user_profile"]);
+    add_action('personal_options_update', ["\plugins\goo1\omni\oAuthDanceapp", "save_field_to_user_profile"]);
+    add_action('edit_user_profile_update', ["\plugins\goo1\omni\oAuthDanceapp", "save_field_to_user_profile"]);
+    /*oAuth Login END*/
     
 
     /*Site Health Info START*/

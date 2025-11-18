@@ -62,4 +62,26 @@ class oAuthDanceapp {
         \wp_redirect(admin_url());
         exit;
     }
+
+    public static function add_field_to_user_profile($user) {
+        ?>
+        <h3>DanceApp OAuth Info</h3>
+        <table class="form-table">
+            <tr>
+            <th><label for="danceapp_user_id">DanceApp User ID</label></th>
+            <td>
+                <input type="number" name="danceapp_user_id" id="danceapp_user_id" value="<?php echo esc_attr(get_the_author_meta('danceapp_user_id', $user->ID)); ?>" class="regular-text" MIN="0" /><br />
+                <span class="description">This is your DanceApp User ID linked to this WordPress account.</span>
+            </td>
+            </tr>
+        </table>
+        <?php
+    }
+
+    public static function save_field_to_user_profile($user_id) {
+        if (!current_user_can('edit_user', $user_id)) {
+            return false;
+        }
+        update_user_meta($user_id, 'danceapp_user_id', sanitize_text_field($_POST['danceapp_user_id']));
+    }
 }

@@ -50,6 +50,18 @@ class SiteHealth {
             "label" => __( "Nagios Last Used" ),
             "test"  => [__CLASS__, "test_nagios_lastused"],
         );
+        $tests["direct"]["goo1_xmlrpc_enabled"] = array(
+            "label" => __( "XML-RPC Status" ),
+            "test"  => [__CLASS__, "test_xmlrpc_enabled"],
+        );
+        $tests["direct"]["goo1_redis_enabled"] = array(
+            "label" => __( "Redis Caching Status" ),
+            "test"  => [__CLASS__, "test_redis_enabled"],
+        );
+        $tests["direct"]["goo1_waf_enabled"] = array(
+            "label" => __( "WAF Status" ),
+            "test"  => [__CLASS__, "test_waf_enabled"],
+        );
         return $tests;
     }
 
@@ -350,6 +362,76 @@ class SiteHealth {
         $result['status'] = 'good';
         $result['label'] = __( "Nagios check okay" );
         $result["description"] = __("Nagios is checking your website for problems. Last Connection: ".date("Y-m-d H:i:s T", $a));
+
+        return $result;
+    }
+
+    public static function test_xmlrpc_enabled() {
+        $result = array(
+            'label'       => __( 'XML-RPC is disabled' ),
+            'status'      => 'good',
+            'badge'       => array(
+                'label' => __( 'Security' ),
+                'color' => 'blue',
+            ),
+            'description' => '<p>XML-RPC is disabled on this wordpress installation.</p>',
+            'actions'     => '',
+            'test'        => 'goo1_xmlrpc_enabled',
+        );
+
+        if (get_option( "enable_xmlrpc" ) == 1) {
+            $result['status'] = 'recommended';
+            $result['label'] = __( 'XML-RPC is enabled' );
+            $result["description"] = __("XML-RPC can be used to attack your wordpress installation. If you don't need it, please disable it.");
+            $result["actions"] = '<a href="/wp-admin/options-writing.php">Writing Settings</a>';
+            return $result;
+        }
+
+        return $result;
+    }
+
+    public static function test_redis_enabled() {
+        $result = array(
+            'label'       => __( 'Redis Caching is disabled' ),
+            'status'      => 'recommended',
+            'badge'       => array(
+                'label' => __( 'Performance' ),
+                'color' => 'blue',
+            ),
+            'description' => '<p>Redis Caching can improve the performance of your wordpress installation significantly.</p>',
+            'actions'     => '<a href="/wp-admin/options-general.php?page=goo1omni-settings">show recommendations</a>',
+            'test'        => 'goo1_redis_enabled',
+        );
+
+        if (is_plugin_active("redis-cache/redis-cache.php")) {
+            $result['status'] = 'good';
+            $result['label'] = __( 'Redis Caching is enabled' );
+            $result["description"] = __("Redis Caching is enabled and improves the performance of your wordpress installation.");
+            return $result;
+        }
+
+        return $result;
+    }
+
+    public static function test_waf_enabled() {
+        $result = array(
+            'label'       => __( 'WAF is not installed' ),
+            'status'      => 'recommended',
+            'badge'       => array(
+                'label' => __( 'Security' ),
+                'color' => 'blue',
+            ),
+            'description' => '<p>A Web-Application-Firewall (WAF) helps to protect your wordpress installation from attacks.</p>',
+            'actions'     => '<a href="/wp-admin/options-general.php?page=goo1omni-settings">show recommendations</a>',
+            'test'        => 'goo1_waf_enabled',
+        );
+
+        if (is_plugin_active("wordfence/wordfence.php") || is_plugin_active("better-wp-security/better-wp-security.php")) {
+            $result['status'] = 'good';
+            $result['label'] = __( 'WAF is installed' );
+            $result["description"] = __("A Web-Application-Firewall (WAF) helps to protect your wordpress installation from attacks. You have a WAF installed.");
+            return $result;
+        }
 
         return $result;
     }
