@@ -6,6 +6,16 @@ class core {
 	
   public static function init() {
     if (strpos($_SERVER["REQUEST_URI"], "/wp-admin/") !== false) self::security_block_country();
+    
+    // Disable XML-RPC by default for security
+    add_filter('xmlrpc_enabled', '__return_false');
+    
+    // Initialize Debug Mode Manager
+    \plugins\goo1\omni\DebugMode::init();
+    
+    // Initialize File Integrity Monitor
+    \plugins\goo1\omni\FileIntegrity::init();
+    
     add_filter("two_factor_providers", [__CLASS__, "my_two_factor_providers"]);
     add_action('init', [__CLASS__, "action_init"]);
     add_filter("template_redirect", function() {
