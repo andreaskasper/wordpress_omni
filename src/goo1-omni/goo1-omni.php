@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/andreaskasper/
  * Description: Important functions for goo1 websites
  * Author: Andreas Kasper
- * Version: 0.1.46
+ * Version: 0.1.47
  * Author URI: https://github.com/andreaskasper/
  * Network: True
  * Text Domain: goo1-omni
@@ -37,4 +37,3 @@ $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
     __FILE__, //Full path to the main plugin file or functions.php.
     'goo1-omni'
 );
-
