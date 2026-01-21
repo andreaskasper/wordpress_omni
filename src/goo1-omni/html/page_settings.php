@@ -30,6 +30,10 @@ if (!empty($_POST["act"]) && $_POST["act"] == "save") {
         // Save static header setting
         config::set("page_is_static_header", !empty($_POST["page_is_static_header"]));
         
+        // Save File Integrity notification settings
+        config::set("integrity_notify_email", !empty($_POST["integrity_notify_email"]));
+        config::set("integrity_notify_dashboard", !empty($_POST["integrity_notify_dashboard"]));
+        
         $is_saved = true;
     }
 }
@@ -363,6 +367,58 @@ function render_settings_tab() {
                         </td>
                     </tr>
                     <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="goo1-omni-card">
+            <h2><?php _e('File Integrity Notifications', 'goo1-omni'); ?></h2>
+            <p class="description">
+                <?php _e('Configure how you want to be notified about file integrity issues.', 'goo1-omni'); ?>
+            </p>
+            
+            <table class="form-table" role="presentation">
+                <tbody>
+                    <tr>
+                        <th scope="row">
+                            <?php _e('Email Notifications', 'goo1-omni'); ?>
+                        </th>
+                        <td>
+                            <fieldset>
+                                <label>
+                                    <input name="integrity_notify_email" 
+                                           type="checkbox" 
+                                           id="fld_integrity_notify_email" 
+                                           value="1" 
+                                           <?php checked(config::get("integrity_notify_email", true), true); ?>/>
+                                    <?php _e('Send email alerts when file integrity issues are detected', 'goo1-omni'); ?>
+                                </label>
+                                <p class="description">
+                                    <?php printf(__('Emails will be sent to: %s', 'goo1-omni'), '<strong>' . esc_html(get_option('admin_email')) . '</strong>'); ?>
+                                </p>
+                            </fieldset>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <?php _e('Dashboard Notices', 'goo1-omni'); ?>
+                        </th>
+                        <td>
+                            <fieldset>
+                                <label>
+                                    <input name="integrity_notify_dashboard" 
+                                           type="checkbox" 
+                                           id="fld_integrity_notify_dashboard" 
+                                           value="1" 
+                                           <?php checked(config::get("integrity_notify_dashboard", true), true); ?>/>
+                                    <?php _e('Show warning notices in WordPress admin dashboard', 'goo1-omni'); ?>
+                                </label>
+                                <p class="description">
+                                    <?php _e('Display admin notices when file integrity issues are found.', 'goo1-omni'); ?>
+                                </p>
+                            </fieldset>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>

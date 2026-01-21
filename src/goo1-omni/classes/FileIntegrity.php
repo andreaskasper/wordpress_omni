@@ -225,7 +225,7 @@ class FileIntegrity {
     private static function send_integrity_alert($results) {
         // Check if notifications are enabled
         $notify_pushover = config::get('integrity_notify_pushover');
-        $notify_email = config::get('integrity_notify_email');
+        $notify_email = config::get('integrity_notify_email', true); // Default to true
 
         $message = self::format_alert_message($results);
 
@@ -238,8 +238,8 @@ class FileIntegrity {
             );
         }
 
-        // Send email notification
-        if ($notify_email !== false) {
+        // Send email notification if enabled
+        if ($notify_email) {
             $admin_email = get_option('admin_email');
             $site_name = get_bloginfo('name');
             
@@ -301,6 +301,12 @@ class FileIntegrity {
      */
     public static function show_integrity_notices() {
         if (!current_user_can('manage_options')) {
+            return;
+        }
+
+        // Check if dashboard notices are enabled
+        $notify_dashboard = config::get('integrity_notify_dashboard', true); // Default to true
+        if (!$notify_dashboard) {
             return;
         }
 
